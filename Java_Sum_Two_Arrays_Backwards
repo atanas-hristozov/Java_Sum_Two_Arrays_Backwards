@@ -1,0 +1,65 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int[] value = new int[2];
+        String input = scanner.nextLine();
+        String[] parts = input.split(" ");
+        int p = Integer.parseInt(parts[0]);
+        int k = Integer.parseInt(parts[1]);
+
+        String line1 = scanner.nextLine();
+        String[] strAray1 = line1.split(" ");
+        int[] array1 = new int[p];
+        for (int i=0; i<p; i++) {
+            array1[i] = Integer.parseInt(strAray1[i]);
+        }
+
+        String line2 = scanner.nextLine();
+        String[] strAray2 = line2.split(" ");
+        int[] array2 = new int[k];
+        for (int i=0; i<k; i++) {
+            array2[i] = Integer.parseInt(strAray2[i]);
+        }
+        sum(array1, array2);
+    }
+    public static void sum(int[] first, int[] second){
+        int[] sum = new int[first.length > second.length ? first.length: second.length];
+        int x = first.length - 1;
+        int[] first1 = new int[first.length];
+        for (int i=0; i<first.length; i++) {
+            first1[i] = first[x-i];
+        }
+        int y = second.length - 1;
+        int[] second1 = new int[second.length];
+        for (int i=0; i<second.length; i++) {
+            second1[i] = second[y-i];
+        }
+        int i = first.length - 1;
+        int j = second.length - 1;
+        int k = sum.length - 1;
+        int c = 0;
+        while (i >= 0 || j >= 0) {
+            int d = c;
+
+            if (i >= 0)
+                d += first1[i];
+
+            if (j >= 0)
+                d += second1[j];
+
+            c = d / 10;
+            d = d % 10;
+            sum[k] = d;
+
+            i--;
+            j--;
+            k--;
+        }
+        for (int h=0; h<sum.length-1; h++) {
+            System.out.print(sum[sum.length - h -1] + " ");
+        }
+        System.out.print(sum[0] + " ");
+    }
+}
